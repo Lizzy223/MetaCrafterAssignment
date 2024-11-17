@@ -3,15 +3,12 @@
 pragma solidity >=0.8.2 <0.9.0;
 
 interface LizzieERC20{
-
-function totalSupply() external view returns (uint256);
-function balanceOf(address tokenOwner) external view returns (uint);
-function allowance(address tokenOwner, address spender)
-external view returns (uint);
-function transfer(address to, uint tokens) external returns (bool);
-function approve(address spender, uint tokens)  external returns (bool);
-function transferFrom(address from, address to, uint tokens) external returns (bool);
-
+    function totalSupply() external view returns (uint256);
+    function balanceOf(address account) external view returns (uint256);
+    function transfer(address recipient, uint256 amount)  external returns (bool);
+    function allowance(address owner, address spender)external view returns (uint256);
+    function approve(address spender, uint256 amount) external returns (bool);
+    function transferFrom(address spender, address recipient, uint256 amount) external returns (bool);
 }
 
 contract LizzieToken{
