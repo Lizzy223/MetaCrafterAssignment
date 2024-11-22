@@ -4,12 +4,19 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract MyToken is ERC20, Ownable {
-    // Constructor to set the token name and symbol
-    constructor() ERC20("MyToken", "MTK") {}
+contract LizzieToken is ERC20, Ownable {
+    constructor() ERC20("lizzietoken", "lt") Ownable(msg.sender) {
+         _mint(msg.sender, 1000*10**decimals());
+         }
 
-    // Mint function restricted to only the owner
-    function mint(address to, uint256 amount) external onlyOwner {
+    // Only the owner can mint new tokens
+    function mint(address to, uint256 amount) public onlyOwner {
         _mint(to, amount);
     }
+
+    // Any user can burn their tokens
+    function burn(uint256 amount) public {
+        _burn(msg.sender, amount);
+    }
 }
+
